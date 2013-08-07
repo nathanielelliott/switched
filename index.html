@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script>
+function switchOn()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  { xmlhttp=new XMLHttpRequest(); }
+else
+  { xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"); }
+xmlhttp.open("POST","http://71.246.251.182:8081/digitalWrite/7/1",true);
+xmlhttp.send();
+}
+
+function switchOff()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  { xmlhttp=new XMLHttpRequest(); }
+else
+  { xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"); }
+xmlhttp.open("POST","http://71.246.251.182:8081/digitalWrite/7/0",true);
+xmlhttp.send();
+}
+</script>
+</head>
+<body>
+
+<button class="on" type="button" onclick="switchOn()">On</button>
+<button class="off" style="display:none;" type="button" onclick="switchOff()">Off</button>
+
+<script>
+$(".on").click(function () {
+  $(".off").toggle();
+  $(".on").hide();
+});
+$(".off").click(function () {
+  $(".on").toggle();
+  $(".off").hide();
+});
+</script>
+</body>
+</html>
